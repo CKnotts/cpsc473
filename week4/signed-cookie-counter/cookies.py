@@ -15,7 +15,7 @@ def _sign(s):
 
     Example:
 
-        _sign('baz')
+        _sign('bar')
 
     will return 'bar|b50e06b7a3c2b6103e0526fe5ad871ad18d5b2edd1dc63e2d7ba96bd985c1384'
     if DELIMITER is '|'
