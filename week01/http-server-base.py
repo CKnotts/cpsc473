@@ -2,6 +2,7 @@
 
 import BaseHTTPServer
 
+
 class EchoHTTPRequestHandler(BaseHTTPServer.BaseHTTPRequestHandler):
     def do_GET(self):
         response = '%s %s %s\n%s' % \
@@ -10,7 +11,7 @@ class EchoHTTPRequestHandler(BaseHTTPServer.BaseHTTPRequestHandler):
         self.send_response(200)
         self.send_header('Content-Type', 'text/plain')
         self.end_headers()
-        
+
         self.wfile.write(response)
 
     def do_POST(self):
@@ -21,4 +22,3 @@ class EchoHTTPRequestHandler(BaseHTTPServer.BaseHTTPRequestHandler):
         self.wfile.write(self.rfile.read(length))
 
 BaseHTTPServer.test(EchoHTTPRequestHandler)
-

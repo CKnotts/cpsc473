@@ -4,6 +4,7 @@ import cookies
 
 cookies.SECRET = 's00p3rs33kr1t'
 
+
 class MainHandler(webapp2.RequestHandler):
     def get(self):
         count = cookies.get(self.request, 'count', default='0')

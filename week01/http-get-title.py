@@ -4,6 +4,7 @@ import sys
 import urllib2
 import HTMLParser
 
+
 class TitleParser(HTMLParser.HTMLParser):
     def __init__(self):
         HTMLParser.HTMLParser.__init__(self)
@@ -27,4 +28,3 @@ for url in sys.argv[1:]:
     f = urllib2.urlopen(url)
     parser.feed(f.read())
     f.close()
-

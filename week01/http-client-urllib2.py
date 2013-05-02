@@ -9,4 +9,3 @@ for url in sys.argv[1:]:
     for line in f.readlines():
         print line.rstrip()
     f.close()
-

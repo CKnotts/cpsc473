@@ -8,13 +8,16 @@ from bottle_sqlite import SQLitePlugin
 
 install(SQLitePlugin(dbfile='./sqllite.db'))
 
+
 @get('/')
 def index():
     return static_file('form.html', root=root)
 
+
 @get('/ajax.js')
 def js():
     return static_file('ajax.js', root=root)
+
 
 def html_table(headings, rows):
     html = ['<table border="1">'
@@ -33,6 +36,7 @@ def html_table(headings, rows):
     html.append('</table>')
 
     return '\n'.join(html)
+
 
 @post('/')
 def query(db):
@@ -53,4 +57,3 @@ def query(db):
 
 root = os.path.dirname(os.path.realpath(__file__))
 run(host='0.0.0.0', port=8080, debug=True, reloader=True)
-

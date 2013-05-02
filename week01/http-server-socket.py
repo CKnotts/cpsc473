@@ -2,6 +2,7 @@
 
 import SocketServer
 
+
 class HttpRequestHandler(SocketServer.StreamRequestHandler):
     allow_reuse_address = True
 
@@ -16,4 +17,3 @@ class HttpRequestHandler(SocketServer.StreamRequestHandler):
 endpoint = ('localhost', 8000)
 server = SocketServer.TCPServer(endpoint, HttpRequestHandler)
 server.serve_forever()
-

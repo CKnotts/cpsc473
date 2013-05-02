@@ -4,6 +4,7 @@ import string
 
 import webapp2
 
+
 def template(filename, mapping):
     with open(os.path.join('templates', filename)) as f:
         template = string.Template(f.read())
@@ -13,6 +14,7 @@ def template(filename, mapping):
 
     return template.substitute(escaped)
 
+
 class StringTemplateHandler(webapp2.RequestHandler):
 
     def get(self):
@@ -20,6 +22,7 @@ class StringTemplateHandler(webapp2.RequestHandler):
         output = template.substitute({'class_name': self.__class__})
         html = cgi.escape(output, quote=True)
         self.response.write(html)
+
 
 class FileTemplateHandler(webapp2.RequestHandler):
 
@@ -32,4 +35,3 @@ app = webapp2.WSGIApplication([
     ('/templates/string', StringTemplateHandler),
     ('/templates/file', FileTemplateHandler)
 ], debug=True)
-

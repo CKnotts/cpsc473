@@ -11,12 +11,14 @@ install(RedisPlugin())
 
 INIT_KEY = 10 * 36 ** 3
 
+
 def next_key(rdb):
     rdb.setnx('next', INIT_KEY)
 
     incr = random.randint(1, 10)
     value = rdb.incr('next', incr)
-    return  base36encode(value)
+    return base36encode(value)
+
 
 # From http://en.wikipedia.org/wiki/Base_36#Python_Conversion_Code
 def base36encode(number, alphabet='0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'):
@@ -40,11 +42,13 @@ def base36encode(number, alphabet='0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'):
 
     return sign + base36
 
+
 @get('/')
 def index(rdb):
     popular = rdb.zrevrange('hits', 0, 9, withscores=True)
 
     return template('index', popular=popular)
+
 
 @post('/')
 def shorten(rdb):
@@ -74,6 +78,7 @@ def shorten(rdb):
         popular=popular
     )
 
+
 @get('/:key')
 def follow(rdb, key):
     input_url = rdb.get('short:' + key)
@@ -88,4 +93,3 @@ def follow(rdb, key):
 
 
 run(host='0.0.0.0', port=8080, debug=True, reloader=True)
-

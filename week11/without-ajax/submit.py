@@ -12,6 +12,7 @@ install(SQLitePlugin(dbfile='./sqllite.db'))
 def index():
     return template('form', result=None)
 
+
 @post('/')
 def query(db):
     query = request.forms.query
@@ -26,4 +27,3 @@ def query(db):
     return template('form', result=answer)
 
 run(host='0.0.0.0', port=8080, debug=True, reloader=True)
-

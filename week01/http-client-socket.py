@@ -2,6 +2,7 @@
 
 import socket
 
+
 client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 endpoint = ('www.fullerton.edu', 80)
 client.connect(endpoint)
@@ -28,4 +29,3 @@ while True:
     print data
 
 client.close()
-
