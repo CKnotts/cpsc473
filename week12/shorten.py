@@ -6,7 +6,7 @@ from bottle import install, get, post, request
 from bottle import template, abort, redirect, run
 from bottle_redis import RedisPlugin
 
-# sudo service start redis-server
+# sudo service redis-server start
 install(RedisPlugin())
 
 INIT_KEY = 10 * 36 ** 3
